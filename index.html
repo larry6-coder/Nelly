@@ -1,0 +1,68 @@
+import random
+
+class ScholarshipFinder:
+    def __init__(self):
+        # Database of fully funded or free scholarships
+        self.scholarships = [
+            {
+                "name": "Fulbright Foreign Student Program",
+                "country": "United States",
+                "coverage": "Full tuition, living stipend, airfare, and health insurance",
+                "advice": "Father says: 'Focus on your leadership essay. It shows your character.'"
+            },
+            {
+                "name": "Chevening Scholarships",
+                "country": "United Kingdom",
+                "coverage": "Full tuition, monthly stipend, flights, and visa costs",
+                "advice": "Mende says: 'Network with alumni early to understand what reviewers want.'"
+            },
+            {
+                "name": "DAAD Academic Exchange Service",
+                "country": "Germany",
+                "coverage": "Free university tuition, monthly allowance, and travel subsidy",
+                "advice": "Father says: 'Learn basic German. It shows dedication to their culture.'"
+            },
+            {
+                "name": "MEXT Scholarship",
+                "country": "Japan",
+                "coverage": "Full tuition, monthly allowance, and round-trip airfare",
+                "advice": "Mende says: 'Find a research professor in Japan before you apply.'"
+            },
+            {
+                "name": "Hubert Humphrey Fellowship",
+                "country": "United States",
+                "coverage": "Full tuition, living allowance, travel, and book allowance",
+                "advice": "Father says: 'Highlight your public service work. They value community impact.'"
+            }
+        ]
+
+    def get_scholarships_by_country(self, destination):
+        """Filter scholarship opportunities by destination country."""
+        results = [s for s in self.scholarships if s["country"].lower() == destination.lower()]
+        return results if results else "No specific scholarships found for this country in our database."
+
+    def get_random_advice(self):
+        """Get random wise counsel from Father or Mende."""
+        selected = random.choice(self.scholarships)
+        return selected["advice"]
+
+    def display_all(self):
+        """Print out all available scholarship information."""
+        print("=== FREE & FULLY FUNDED GLOBAL SCHOLARSHIPS ===\n")
+        for s in self.scholarships:
+            print(f"🎓 Scholarship: {s['name']}")
+            print(f"🌍 Country: {s['country']}")
+            print(f"💰 Coverage: {s['coverage']}")
+            print(f"💡 Wise Words: {s['advice']}")
+            print("-" * 50)
+
+# --- Execution Example ---
+if __name__ == "__main__":
+    bot = ScholarshipFinder()
+    
+    # 1. Display everything
+    bot.display_all()
+    
+    # 2. Get a quick piece of advice for the day
+    print("\n🌟 DAILY APPLICATION MOTIVATION 🌟")
+    print(bot.get_random_advice())
