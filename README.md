@@ -1,1 +1,0 @@
-# schollaship-application
